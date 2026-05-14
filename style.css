@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f7f2e8;
+  background-image: url("tile.png");
+  background-repeat: repeat;
+  background-size: 220px;
+  position: relative;
+}
+
+.page-overlay {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 35%),
+    rgba(18, 14, 10, 0.62);
+  pointer-events: none;
+}
+
+.home {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 20px 56px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  letter-spacing: 0.04em;
+  color: #fff5dd;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+.subtitle {
+  margin: 14px auto 0;
+  max-width: 700px;
+  color: #e8dac0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.game-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(40, 28, 18, 0.82);
+  border: 1px solid rgba(255, 233, 186, 0.18);
+  border-radius: 24px;
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 233, 186, 0.32);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.card-content {
+  padding: 28px;
+}
+
+.card-content h2 {
+  margin: 0 0 14px;
+  font-size: 2rem;
+  color: #fff5dd;
+}
+
+.card-content p {
+  margin: 0 0 22px;
+  color: #ead9bb;
+  line-height: 1.7;
+}
+
+.play-btn {
+  display: inline-block;
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(180deg, #f3d598, #caa25c);
+  color: #2d1b0c;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+}
+
+@media (max-width: 760px) {
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home {
+    padding: 28px 14px 36px;
+  }
+}

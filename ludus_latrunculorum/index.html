@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ludus Latrunculorum</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <div class="page-overlay"></div>
+
+  <main class="app">
+    <a href="../index.html" class="back-link">← Terug naar home</a>
+
+    <header class="topbar">
+      <h1>Ludus Latrunculorum</h1>
+      <p class="subtitle">Kies eerst een regelsysteem en speel daarna op een 8×8 bord.</p>
+      <p>
+        Beide spelers beginnen met 20 stenen. Eerst plaatsen zij om de beurt hun stenen
+        op een leeg vak. Daarna verplaatsen zij telkens één steen orthogonaal.
+        In de Piso-variant worden omsingelde stenen meteen verwijderd. In de Seneca-variant
+        worden zij eerst inciti (immobiel) en pas later verwijderbaar tenzij zij gered worden door een tegenomsingeling van een omsingelende steen.
+      </p>
+    </header>
+
+    <section class="game-shell">
+      <aside class="info-panel">
+        <div class="status-card">
+          <span class="label">Variant</span>
+          <div id="variantText" class="value">Nog niet gekozen</div>
+        </div>
+
+        <div id="variantPicker" class="status-card variant-picker">
+          <span class="label">Kies regels</span>
+          <div class="variant-buttons">
+            <button id="choosePisoBtn" class="variant-btn">Piso</button>
+            <button id="chooseSenecaBtn" class="variant-btn">Seneca</button>
+          </div>
+          <p class="variant-note">
+            Piso: gevangen stenen verdwijnen meteen.<br />
+            Seneca: gevangen stenen worden eerst inciti en verdwijnen later pas.
+          </p>
+        </div>
+
+        <div class="status-card small">
+          <span class="label">Spelmodus</span>
+          <div class="controls-grid">
+            <label class="control-field">
+              <span>Tegenstander</span>
+              <select id="gameModeSelect">
+                <option value="pvp">Speler tegen speler</option>
+                <option value="ai-p2">Speler 1 tegen AI</option>
+                <option value="ai-p1">AI tegen Speler 2</option>
+                <option value="ai-both">AI tegen AI</option>
+              </select>
+            </label>
+          </div>
+          <p id="aiThinking" class="thinking-text hidden">AI denkt na…</p>
+          <p class="settings-note">De AI werkt in zowel de plaatsfase als de verplaatsfase.</p>
+        </div>
+
+        <div class="status-card">
+          <span class="label">Beurt</span>
+          <div id="turnText" class="value">Selecteer Piso of Seneca om te starten</div>
+        </div>
+
+        <div class="status-card small">
+          <span class="label">Stenen</span>
+          <div class="stone-counts">
+            <div>Speler 1 geplaatst: <strong id="countP1Placed">0</strong>/20</div>
+            <div>Speler 2 geplaatst: <strong id="countP2Placed">0</strong>/20</div>
+            <div>Speler 1 op bord: <strong id="countP1Board">0</strong></div>
+            <div>Speler 2 op bord: <strong id="countP2Board">0</strong></div>
+            <div>Inciti wit: <strong id="countP1Inciti">0</strong></div>
+            <div>Inciti zwart: <strong id="countP2Inciti">0</strong></div>
+          </div>
+        </div>
+        <button id="resetBtn" class="reset-btn">Reset spel</button>
+        <button id="toggleHintsBtn" class="reset-btn">Zet hints uit</button>
+      </aside>
+
+      <section class="board-panel">
+        <div id="game">
+          <img id="board" src="board.png" alt="Ludus Latrunculorum bord" />
+          <div id="holes"></div>
+          <div id="pieces"></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div id="winModal" class="modal hidden">
+    <div class="modal-card">
+      <h2>Spel afgelopen</h2>
+      <p id="winMessage">Speler 1 wint!</p>
+      <button id="playAgainBtn" class="modal-btn">Opnieuw spelen</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
